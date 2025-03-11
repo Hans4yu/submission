@@ -3,19 +3,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-'''file_path = 'dashboard/main_data.csv'
-
-try:
-    main_df = pd.read_csv(file_path)
-    if 'order_purchase_timestamp' in main_df.columns:
-        main_df['order_purchase_timestamp'] = pd.to_datetime(main_df['order_purchase_timestamp'])
-except FileNotFoundError:
-    st.error(f"Error: File '{file_path}' not found. Please ensure the file exists in the specified path.")
-    st.stop()
-except Exception as e:
-    st.error(f"An error occurred while reading the file: {e}")
-    st.stop()'''
-    
     # Use caching to prevent reloading
 @st.cache_data
 def load_data(file_path):
