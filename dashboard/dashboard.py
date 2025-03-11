@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-file_path = 'dashboard/main_data.csv'
+'''file_path = 'dashboard/main_data.csv'
 
 try:
     main_df = pd.read_csv(file_path)
@@ -14,6 +14,23 @@ except FileNotFoundError:
     st.stop()
 except Exception as e:
     st.error(f"An error occurred while reading the file: {e}")
+    st.stop()'''
+    
+    # Use caching to prevent reloading
+@st.cache_data
+def load_data(file_path):
+    return pd.read_csv(file_path)
+
+# Correct file path
+file_path = os.path.join(os.path.dirname(__file__), "main_data.csv")
+
+# Check if file exists
+if os.path.exists(file_path):
+    main_df = load_data(file_path)
+    if 'order_purchase_timestamp' in main_df.columns:
+        main_df['order_purchase_timestamp'] = pd.to_datetime(main_df['order_purchase_timestamp'])
+else:
+    st.error(f"Error: File '{file_path}' not found in 'dashboard/' directory.")
     st.stop()
 
 st.title("E-Commerce Sales Dashboard")
