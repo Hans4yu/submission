@@ -1,0 +1,4 @@
+[server]
+enableWebsocketCompression = false
+headless = true
+runOnSave = true
