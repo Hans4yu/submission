@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-file_path = 'main_data.csv'
+file_path = './dashboard/main_data.csv'
 
 try:
     main_df = pd.read_csv(file_path)
